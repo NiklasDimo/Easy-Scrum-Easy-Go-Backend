@@ -11,7 +11,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     private String name;
     private String currency;
     private Double price;
@@ -19,8 +19,8 @@ public class Product {
     private String category;
 
 
-    public Product(Integer id, String name, String currency, Double price, String description, String category) {
-        this.id = id;
+    public Product(String name, String currency, Double price, String description, String category) {
+
         this.name = name;
         this.currency = currency;
         this.price = price;

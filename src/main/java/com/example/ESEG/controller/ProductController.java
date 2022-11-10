@@ -2,11 +2,14 @@ package com.example.ESEG.controller;
 
 import com.example.ESEG.model.Product;
 import com.example.ESEG.repository.ProductRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@CrossOrigin(origins = "http://Localhost:4200")
+@CrossOrigin(origins ="http://localhost:4200")
+
 @RestController
 //@RequestMapping("/api/product")
 public class ProductController {
@@ -62,6 +65,7 @@ public class ProductController {
     public Product createProduct(@RequestBody Product product) {
         repository.save(product);
         return product;
+
     }
 
 /*
