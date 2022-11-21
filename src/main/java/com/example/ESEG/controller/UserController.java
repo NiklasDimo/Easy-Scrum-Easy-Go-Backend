@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @CrossOrigin(origins ="http://localhost:4200")
-
 @RestController
 public class UserController {
 
@@ -28,8 +27,8 @@ public class UserController {
 
     //Get single User
     @RequestMapping("api/user/{id}")
-    public User getUser (@PathVariable Integer id) {
-        return repository.findById(id).orElse(null);
+    public User getUser (@PathVariable Long id) {
+        return repository.findById(Long.valueOf(id)).orElse(null);
     }
 
     //post new User
@@ -40,22 +39,10 @@ public class UserController {
 
     }
 
-    @PutMapping(path="/api/user/{id}")
-    public void updateUser(@PathVariable Integer id, @RequestBody Map<String, String> body) {
-        User current = repository.findById(id).get();
-        current.setUserName(body.get("userName"));
-        current.setPassword(body.get("password"));
-        current.setRole(body.get("role"));
-        repository.save(current);
-
-    }
-
     @DeleteMapping("/api/user/{id}")
-    public void deleteUser(@PathVariable("id") Integer id) {
-        repository.deleteById(id);
+    public void deleteUser(@PathVariable("id") Long id) {
+        repository.deleteById(Long.valueOf(id));
     }
-
-
 
 
 }

@@ -26,10 +26,7 @@ public class EsegApplication {
 			impressumRepository.save(new Impressum(null, "Easy Scrum Easy Go", "Beethovenstraße 1", "73430 Aalen", "Telefon: +49 7361 576-0", "Telefax: +49 7361 576-2250", "E-Mail: info@hs-aalen.de"));
 			repository.save(new Product("Playstation 5", "€", 10.50, "Von Haus aus steckt in der PS5 eine SSD-Festplatte mit 825 Gigabyte Speicher. Sollte euch das nicht reichen, könnt ihr die Konsole per NVMe SSD Slot durch eine weitere Festplatte erweitern.", "Konsole"));
 			repository.save(new Product("Nintendo Switch", "€", 5.99, "Das neue Modell ist in etwa so breit und so hoch wie die Nintendo Switch-Konsole, besitzt aber einen größeren 7-Zoll-OLED-Bildschirm mit intensiver Farbdarstellung und hohem Kontrast.", "Konsole"));
-			userRepository.save(new User( "Peter", "12345", "Mitbearbeiter"));
-
-
-
+			userRepository.save(new User( "Peter", "12345", "USER"));
 		};
 	}
 }
