@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @CrossOrigin(origins ="http://localhost:4200")
-
 @RestController
 //@RequestMapping("/api/product")
 public class ProductController {
@@ -81,7 +80,6 @@ public class ProductController {
     }
     */
 
-
     @PutMapping(path="/api/product/{id}")
     public void updateProduct(@PathVariable Integer id, @RequestBody Map<String, String> body) {
         Product current = repository.findById(id).get();
@@ -102,7 +100,7 @@ public class ProductController {
 
     // Method 1 Delete working
     @DeleteMapping("/api/product/{id}")
-    public void deleteProduct(@PathVariable("id") Integer id) {
+    public void deleteProduct(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 /*
