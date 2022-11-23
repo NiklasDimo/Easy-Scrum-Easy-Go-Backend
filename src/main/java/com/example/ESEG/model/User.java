@@ -10,7 +10,8 @@ import lombok.*;
 public class User {
 
     @Id
-    @Column(nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String username;
 
     public User(String username, String password, String role) {

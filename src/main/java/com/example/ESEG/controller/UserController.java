@@ -39,6 +39,16 @@ public class UserController {
 
     }
 
+    @PutMapping(path="/api/user/{id}")
+    public void updateUser(@PathVariable Long id, @RequestBody Map<String, String> body) {
+        User current = repository.findById(id).get();
+        current.setUsername(body.get("username"));
+        current.setPassword(body.get("password"));
+        current.setRole(body.get("role"));
+        repository.save(current);
+
+    }
+
     @DeleteMapping("/api/user/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         repository.deleteById(Long.valueOf(id));
