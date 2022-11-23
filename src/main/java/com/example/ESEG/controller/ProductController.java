@@ -2,8 +2,6 @@ package com.example.ESEG.controller;
 
 import com.example.ESEG.model.Product;
 import com.example.ESEG.repository.ProductRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -92,10 +90,28 @@ public class ProductController {
 
     }
 
-    /*
-    @PatchMapping("id")
-    ResponseEntity<T> patch(@PathVariable Integer id, RequestBody Map<Object, Object>)
-    */
+    @PatchMapping(path="/api/product/{Id}")
+    public void patchProduct(@PathVariable int Id, @RequestBody Map<String, Object> changes){
+        Product product = repository.findById(Id).get();
+        mapPersistenceModelToRestModel(product);
+        changes.forEach(
+                (change,value) ->{
+                    switch (change){
+                        case "name": product.setName((String) value); repository.save(product);
+                            break;
+                        case "description": product.setDescription((String) value); repository.save(product);
+                            break;
+                        case "category": product.setCategory((String) value); repository.save(product);
+                            break;
+                        case "price":  product.setPrice((Double) value); repository.save(product);
+                            break;
+                        case "currency": product.setCurrency((String) value); repository.save(product);
+                            break;
+                    }
+                }
+        );
+
+    }
 
 
     // Method 1 Delete working
@@ -103,12 +119,16 @@ public class ProductController {
     public void deleteProduct(@PathVariable Integer id) {
         repository.deleteById(id);
     }
-/*
-    //Method 2 Delete working
-    @RequestMapping(method=RequestMethod.DELETE, value="/api/product/{id}")
-    public void deleteProduct(@PathVariable Integer id) {
-        repository.deleteById(id);
+
+    private Product mapPersistenceModelToRestModel(Product product){
+        Product productRestModel = new Product();
+        productRestModel.setId(product.getId());
+        productRestModel.setName(product.getName());
+        productRestModel.setCategory(product.getCategory());
+        productRestModel.setDescription(product.getDescription());
+        productRestModel.setPrice(product.getPrice());
+        productRestModel.setCurrency(product.getCurrency());
+        return productRestModel;
     }
-*/
 
 }

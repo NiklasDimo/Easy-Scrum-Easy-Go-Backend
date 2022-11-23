@@ -1,9 +1,7 @@
 package com.example.ESEG.controller;
 
 
-import com.example.ESEG.model.Product;
 import com.example.ESEG.model.User;
-import com.example.ESEG.repository.ProductRepository;
 import com.example.ESEG.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,10 +47,37 @@ public class UserController {
 
     }
 
+    @PatchMapping(path="/api/user/{Id}")
+    public void patchUser(@PathVariable long Id, @RequestBody Map<String, Object> changes){
+        User user = repository.findById(Id).get();
+        mapPersistenceModelToRestModel(user);
+        changes.forEach(
+                (change,value) ->{
+                    switch (change){
+                        case "username": user.setUsername((String) value); repository.save(user);
+                        break;
+                        case "password": user.setPassword((String) value); repository.save(user);
+                        break;
+                        case "role": user.setRole((String) value); repository.save(user);
+                        break;
+                    }
+                }
+        );
+
+    }
+
     @DeleteMapping("/api/user/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         repository.deleteById(Long.valueOf(id));
     }
 
+    private User mapPersistenceModelToRestModel(User user){
+        User userRestModel = new User();
+        userRestModel.setId(user.getId());
+        userRestModel.setUsername(user.getUsername());
+        userRestModel.setRole(user.getRole());
+        userRestModel.setPassword(user.getPassword());
+        return userRestModel;
+    }
 
 }
