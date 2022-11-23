@@ -27,6 +27,8 @@ public class EsegApplication {
 			repository.save(new Product("Playstation 5", "€ EUR", 10.50, "Von Haus aus steckt in der PS5 eine SSD-Festplatte mit 825 Gigabyte Speicher. Sollte euch das nicht reichen, könnt ihr die Konsole per NVMe SSD Slot durch eine weitere Festplatte erweitern.", "Konsole"));
 			repository.save(new Product("Nintendo Switch", "€ EUR", 5.99, "Das neue Modell ist in etwa so breit und so hoch wie die Nintendo Switch-Konsole, besitzt aber einen größeren 7-Zoll-OLED-Bildschirm mit intensiver Farbdarstellung und hohem Kontrast.", "Konsole"));
 			userRepository.save(new User( "admin", "password", "Admin"));
+			userRepository.save(new User( "user1", "1", "Standard Customer"));
+			userRepository.save(new User( "user2", "1", "Premium Customer"));
 		};
 	}
 }
