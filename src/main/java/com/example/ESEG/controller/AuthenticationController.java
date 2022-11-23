@@ -19,7 +19,6 @@ public class AuthenticationController {
     public ResponseEntity<User> login(Principal principle) {
 
         String name = principle.getName();
-        System.out.println(name);
         return new ResponseEntity<User>(
                 new User(),
                 HttpStatus.OK

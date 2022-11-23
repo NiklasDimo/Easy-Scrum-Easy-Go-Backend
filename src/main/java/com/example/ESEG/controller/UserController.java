@@ -32,9 +32,11 @@ public class UserController {
     //post new User
     @PostMapping(value="/api/user", consumes="application/json", produces="application/json")
     public User createUser(@RequestBody User user) {
+        if (repository.findByUsername(user.getUsername()) != null){
+            throw new RuntimeException("Username already exist");
+        }
         repository.save(user);
         return user;
-
     }
 
     @PutMapping(path="/api/user/{id}")
