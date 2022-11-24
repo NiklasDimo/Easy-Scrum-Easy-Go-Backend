@@ -16,15 +16,18 @@ public class Product {
     private String currency;
     private Double price;
     private String description;
+
+    private String productDetails;
     private String category;
 
 
-    public Product(String name, String currency, Double price, String description, String category) {
+    public Product(String name, String currency, Double price, String description, String productDetails, String category) {
 
         this.name = name;
         this.currency = currency;
         this.price = price;
         this.description = description;
+        this.productDetails= productDetails;
         this.category = category;
     }
 
@@ -78,5 +81,13 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getProductDetails() {
+        return productDetails;
+    }
+
+    public void setProductDetails(String productDetails) {
+        this.productDetails = productDetails;
     }
 }
