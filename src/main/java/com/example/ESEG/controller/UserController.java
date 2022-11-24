@@ -24,9 +24,14 @@ public class UserController {
     }
 
     //Get single User
-    @RequestMapping("api/user/{id}")
+    /*@RequestMapping("api/user/{id}")
     public User getUser (@PathVariable Long id) {
         return repository.findById(Long.valueOf(id)).orElse(null);
+    }*/
+
+    @RequestMapping("api/user/{username}")
+    public User getUser (@PathVariable String username) {
+        return repository.findByUsername(String.valueOf(username));
     }
 
     //post new User
