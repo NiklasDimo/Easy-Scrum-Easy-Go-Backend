@@ -27,7 +27,7 @@ public class BasicAuthenticationConfig {
                 .antMatchers("/api/**")
                 .permitAll()
                 .antMatchers("/private/**")
-                .hasAnyRole("USER", "ADMIN")
+                .hasAnyRole("ADMIN")
                 .and()
                 .httpBasic(withDefaults());
 
