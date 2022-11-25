@@ -85,6 +85,7 @@ public class ProductController {
         current.setCurrency(body.get("currency"));
         current.setPrice(Double.parseDouble(body.get("price")));
         current.setDescription(body.get("description"));
+        current.setProductDetails(body.get("productDetails"));
         current.setCategory(body.get("category"));
         repository.save(current);
 
@@ -104,6 +105,8 @@ public class ProductController {
                         case "category": product.setCategory((String) value); repository.save(product);
                             break;
                         case "price":  product.setPrice((Double) value); repository.save(product);
+                            break;
+                        case "productDetails":  product.setProductDetails((String) value); repository.save(product);
                             break;
                         case "currency": product.setCurrency((String) value); repository.save(product);
                             break;
@@ -127,6 +130,7 @@ public class ProductController {
         productRestModel.setCategory(product.getCategory());
         productRestModel.setDescription(product.getDescription());
         productRestModel.setPrice(product.getPrice());
+        productRestModel.setProductDetails(product.getProductDetails());
         productRestModel.setCurrency(product.getCurrency());
         return productRestModel;
     }
