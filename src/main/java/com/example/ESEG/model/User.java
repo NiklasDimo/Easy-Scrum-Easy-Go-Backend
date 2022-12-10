@@ -14,18 +14,21 @@ public class User {
     private long id;
     private String username;
 
-    public User(String username, String password, String role) {
+    private String password;
+
+    private String role;
+
+    private String discount;
+
+    public User(String username, String password, String role, String discount) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.discount = discount;
     }
 
     public User(){
 
     }
-
-    private String password;
-
-    private String role;
 
 }

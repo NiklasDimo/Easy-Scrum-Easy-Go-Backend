@@ -50,6 +50,7 @@ public class UserController {
         current.setUsername(body.get("username"));
         current.setPassword(body.get("password"));
         current.setRole(body.get("role"));
+        current.setDiscount(body.get("discount"));
         repository.save(current);
 
     }
@@ -66,6 +67,8 @@ public class UserController {
                         case "password": user.setPassword((String) value); repository.save(user);
                         break;
                         case "role": user.setRole((String) value); repository.save(user);
+                        break;
+                        case "discount": user.setDiscount((String) value); repository.save(user);
                         break;
                     }
                 }
@@ -84,6 +87,7 @@ public class UserController {
         userRestModel.setUsername(user.getUsername());
         userRestModel.setRole(user.getRole());
         userRestModel.setPassword(user.getPassword());
+        userRestModel.setDiscount(user.getDiscount());
         return userRestModel;
     }
 
