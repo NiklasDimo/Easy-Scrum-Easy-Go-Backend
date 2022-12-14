@@ -16,16 +16,13 @@ public class User {
     private String password;
     private String role;
     private String discount;
-    private String vorname;
-    private String nachname;
 
-    public User(String username, String password, String role, String discount, String vorname, String nachname) {
+
+    public User(String username, String password, String role, String discount) {
         this.username = username;
         this.password = password;
         this.role = role;
         this.discount = discount;
-        this.vorname = vorname;
-        this.nachname = nachname;
     }
 
     public User(){

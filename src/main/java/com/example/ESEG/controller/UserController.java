@@ -51,8 +51,8 @@ public class UserController {
         current.setPassword(body.get("password"));
         current.setRole(body.get("role"));
         current.setDiscount(body.get("discount"));
-        current.setVorname(body.get("vorname"));
-        current.setNachname(body.get("nachname"));
+        //current.setVorname(body.get("vorname"));
+        //current.setNachname(body.get("nachname"));
         repository.save(current);
 
     }
@@ -72,10 +72,10 @@ public class UserController {
                         break;
                         case "discount": user.setDiscount((String) value); repository.save(user);
                         break;
-                        case "vorname": user.setVorname((String) value); repository.save(user);
-                        break;
-                        case "nachname": user.setNachname((String) value); repository.save(user);
-                        break;
+                        //case "vorname": user.setVorname((String) value); repository.save(user);
+                        //break;
+                        //case "nachname": user.setNachname((String) value); repository.save(user);
+                        //break;
                     }
                 }
         );
@@ -94,8 +94,8 @@ public class UserController {
         userRestModel.setRole(user.getRole());
         userRestModel.setPassword(user.getPassword());
         userRestModel.setDiscount(user.getDiscount());
-        userRestModel.setVorname(user.getVorname());
-        userRestModel.setNachname(user.getNachname());
+        //userRestModel.setVorname(user.getVorname());
+        //userRestModel.setNachname(user.getNachname());
         return userRestModel;
     }
 
