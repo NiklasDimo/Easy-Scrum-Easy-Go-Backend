@@ -42,9 +42,10 @@ public class AddressController {
         current.setLastName(body.get("lastName"));
         current.setFirstName(body.get("firstName"));
         current.setStreet(body.get("street"));
-        current.setHouseNr(Integer.parseInt("houseNr"));
-        current.setPlz(Integer.parseInt("plz"));
+        current.setHouseNr(Integer.parseInt(body.get("houseNr")));
+        current.setPlz(Integer.parseInt(body.get("plz")));
         current.setCity("city");
+        repository.save(current);
     }
 
     @PatchMapping(path="api/address/{id}")
