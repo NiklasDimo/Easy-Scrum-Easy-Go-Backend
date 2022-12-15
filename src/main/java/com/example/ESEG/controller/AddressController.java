@@ -46,7 +46,7 @@ public class AddressController {
         current.setStreet(body.get("street"));
         current.setHouseNr(Integer.parseInt(body.get("houseNr")));
         current.setPlz(Integer.parseInt(body.get("plz")));
-        current.setCity("city");
+        current.setCity(body.get("city"));
         repository.save(current);
     }
 
