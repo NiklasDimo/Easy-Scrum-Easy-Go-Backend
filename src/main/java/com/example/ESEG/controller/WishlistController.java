@@ -24,10 +24,18 @@ public class WishlistController {
         return repository.findAll();
     }
 
-    @RequestMapping("api/wishlist/{username}")
-    public Wishlist getWishlist(@PathVariable String username) {
-        return  repository.findByUsername(String.valueOf(username));
+    @RequestMapping("api/wishlist/{username}/{productId}")
+    public Wishlist getWishlist(@PathVariable String username, @PathVariable Long productId) {
+        return  repository.findByUsernameAndProductId(String.valueOf(username), Long.valueOf(productId));
     }
+
+    //möglichkeit die Wunschliste einer einzelnen Person zu holen aber noch errors
+    /*
+    @RequestMapping("api/wishlist/{username}")
+    public Wishlist getAllWishlistFromSingleUser(@PathVariable String username) {
+
+        return  repository.findByUsername(String.valueOf(username));
+    }*/
 
     @PostMapping(value="/api/wishlist", consumes="application/json", produces="application/json")
     public Wishlist createWishlist(@RequestBody Wishlist wishlist) {
