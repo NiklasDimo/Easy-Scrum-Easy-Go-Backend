@@ -12,7 +12,7 @@ public class CurrencyController {
 
 
 
-    @RequestMapping("/api/currency/eurToUSD/{money}")
+    @RequestMapping("/api/currency/eurToUsd/{money}")
     public Double eurToUsd(@PathVariable Double money) {
         final double exchangeRate = 1.1;
         money= money* exchangeRate;
