@@ -1,13 +1,7 @@
 package com.example.ESEG;
 
-import com.example.ESEG.model.Address;
-import com.example.ESEG.model.Impressum;
-import com.example.ESEG.model.Product;
-import com.example.ESEG.model.User;
-import com.example.ESEG.repository.AddressRepository;
-import com.example.ESEG.repository.ImpressumRepository;
-import com.example.ESEG.repository.ProductRepository;
-import com.example.ESEG.repository.UserRepository;
+import com.example.ESEG.model.*;
+import com.example.ESEG.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,7 +15,7 @@ public class EsegApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(ProductRepository repository, ImpressumRepository impressumRepository, UserRepository userRepository, AddressRepository addressRepository) {
+	CommandLineRunner commandLineRunner(DetailsRepository detailsRepository, ProductRepository repository, ImpressumRepository impressumRepository, UserRepository userRepository, AddressRepository addressRepository) {
 		return args -> {
 			//add some data
 			//add Product
@@ -32,6 +26,8 @@ public class EsegApplication {
 			userRepository.save(new User( "user1", "1", "Standard Customer", "0", "Mahir", "Berkcan"));
 			userRepository.save(new User( "user2", "1", "Premium Customer", "10", "Tim", "Grunwald"));
 			addressRepository.save(new Address(4L,"Dr.",  "Grau", "Peter", "Hohenbacher Strasse", 34, 73261, "Karlsruhe"));
+			detailsRepository.save(new Details(2L, "Die Tankstellen Schreck ist zurück!!!", "Er überfällt Tankstellen, wie eh und je"));
+			detailsRepository.save(new Details(2L, "Die Reise des Mahirs", "Er reist durch eine Wüste"));
 		};
 	}
 }
