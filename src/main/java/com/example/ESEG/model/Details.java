@@ -18,14 +18,17 @@ public class Details {
 
     private Long productId;
 
+    private String productName;
+
     private String title;
 
     private String description;
 
-    public Details(Long productId, String title, String description) {
+    public Details(Long productId, String title, String description, String productName) {
         this.productId = productId;
         this.title = title;
         this.description = description;
+        this.productName =productName;
     }
 
     public Details() {

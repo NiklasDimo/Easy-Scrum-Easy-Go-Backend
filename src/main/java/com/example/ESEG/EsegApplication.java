@@ -26,8 +26,9 @@ public class EsegApplication {
 			userRepository.save(new User( "user1", "1", "Standard Customer", "0", "Mahir", "Berkcan"));
 			userRepository.save(new User( "user2", "1", "Premium Customer", "10", "Tim", "Grunwald"));
 			addressRepository.save(new Address(4L,"Dr.",  "Grau", "Peter", "Hohenbacher Strasse", 34, 73261, "Karlsruhe"));
-			detailsRepository.save(new Details(2L, "Die Tankstellen Schreck ist zurück!!!", "Er überfällt Tankstellen, wie eh und je"));
-			detailsRepository.save(new Details(2L, "Die Reise des Mahirs", "Er reist durch eine Wüste"));
+			detailsRepository.save(new Details(2L, "Die Tankstellen Schreck ist zurück!!!", "Er überfällt Tankstellen, wie eh und je", "Playstation 5"));
+			detailsRepository.save(new Details(2L, "Die Reise des Mahirs", "Er reist durch eine Wüste", "Playstation 5"));
+			detailsRepository.save(new Details(3L, "Alibabas Reisen Teil 10", "Er reist weiter", "Nintendo Switch"));
 		};
 	}
 }
