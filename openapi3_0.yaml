@@ -1,0 +1,252 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Open API for e-Commerce Webshop
+  description: Open Api Pattern for products
+servers:
+  - url: https://localhost:8080/api/
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    ProductId:
+      type: object
+      properties:
+        name:
+          type: string
+        currency:
+          type: string
+        price:
+          type: integer
+        id:
+          type: integer
+        description:
+          type: string
+        category:
+          type: string
+        productDetails:
+          type: string
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        currency:
+          type: string
+        price:
+          type: integer
+        description:
+          type: string
+        category:
+          type: string
+        productDetails:
+          type: string
+  responses:
+    400Error:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+security:
+  - BasicAuth: []
+paths:
+  /product:
+    get:
+      description: Returns a list of products
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    currency:
+                      type: string
+                    price:
+                      type: integer
+                    id:
+                      type: integer
+                    description:
+                      type: string
+                    category:
+                      type: string
+                    productDetails:
+                      type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    post:
+      description: Lets a user create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                currency:
+                  type: string
+                price:
+                  type: integer
+                description:
+                  type: string
+                category:
+                  type: string
+                productDetails:
+                  type: string
+      responses:
+        '200':
+          description: Successfully created a new product
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /product/{id}:
+    get:
+      description: Returns a list of product based on the Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    currency:
+                      type: string
+                    price:
+                      type: integer
+                    id:
+                      type: integer
+                    description:
+                      type: string
+                    category:
+                      type: string
+                    productDetails:
+                      type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    patch:
+      description: Lets a user update a product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                currency:
+                  type: string
+                price:
+                  type: integer
+                description:
+                  type: string
+                category:
+                  type: string
+                productDetails:
+                  type: string
+      responses:
+        '200':
+          description: Successfully updated a product
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    put:
+      description: Lets a user update a product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                currency:
+                  type: string
+                price:
+                  type: integer
+                description:
+                  type: string
+                category:
+                  type: string
+                productDetails:
+                  type: string
+      responses:
+        '200':
+          description: Successfully updated a product
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    delete:
+      description: Lets a user delete a product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+      responses:
+        '200':
+          description: Successfully deleted a product
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
