@@ -44,17 +44,7 @@ public class ProductController {
     }
 
 
-    /*
-    //Test
-    @PostMapping("/api/product")
-    public ResponseEntity<Product> save(@RequestBody Product product) {
-        try {
-            return new ResponseEntity<>(repository.save(product), HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-    */
+
 
     //Post Product
     //@RequestMapping(method=RequestMethod.POST, value="/api/product")
@@ -65,18 +55,6 @@ public class ProductController {
 
     }
 
-/*
-    //Put or Update Product
-    @RequestMapping(method=RequestMethod.PUT, value="/api/product/{id}")
-    public void updateProduct (@PathVariable int id,@RequestBody Product product) {
-        //repository.findById(id);
-
-        //repository.save(product);
-        Product current = repository.findById(id).get();
-        repository.save(current);
-
-    }
-    */
 
     @PutMapping(path="/api/product/{id}")
     public void updateProduct(@PathVariable Integer id, @RequestBody Map<String, String> body) {
@@ -85,7 +63,6 @@ public class ProductController {
         current.setCurrency(body.get("currency"));
         current.setPrice(Double.parseDouble(body.get("price")));
         current.setDescription(body.get("description"));
-        current.setProductDetails(body.get("productDetails"));
         current.setCategory(body.get("category"));
         repository.save(current);
 
@@ -106,8 +83,7 @@ public class ProductController {
                             break;
                         case "price":  product.setPrice((Double) value); repository.save(product);
                             break;
-                        case "productDetails":  product.setProductDetails((String) value); repository.save(product);
-                            break;
+
                         case "currency": product.setCurrency((String) value); repository.save(product);
                             break;
                     }
@@ -130,7 +106,7 @@ public class ProductController {
         productRestModel.setCategory(product.getCategory());
         productRestModel.setDescription(product.getDescription());
         productRestModel.setPrice(product.getPrice());
-        productRestModel.setProductDetails(product.getProductDetails());
+
         productRestModel.setCurrency(product.getCurrency());
         return productRestModel;
     }
